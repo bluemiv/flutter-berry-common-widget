@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:berry_common/button/gradient_button.dart';
-import 'package:berry_common/circle_image.dart';
+import 'package:berry_common/image/circle_image.dart';
 import 'package:flutter/material.dart';
 
 void main() {
