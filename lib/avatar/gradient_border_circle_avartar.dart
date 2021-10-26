@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
 
-class CircleImage extends StatelessWidget {
-  const CircleImage({
+class GradientBorderCircleAvatar extends StatelessWidget {
+  const GradientBorderCircleAvatar({
     Key? key,
     required this.imagePath,
+    required this.colors,
     this.padding,
     this.margin,
     this.width,
-    this.height,
-    this.radius,
+    this.borderWidth,
+    this.borderColor,
   }) : super(key: key);
 
   final String imagePath;
+  final List<Color> colors;
   final EdgeInsetsGeometry? padding, margin;
-  final double? width, height, radius;
+  final double? width, borderWidth;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    final avartarWidth = (width ?? screenWidth / 2) / 2;
+    final avartarBorderWidth = borderWidth ?? 10;
     return Container(
-      padding: padding ?? EdgeInsets.zero,
+      padding: EdgeInsets.all(avartarBorderWidth),
       margin: margin ?? EdgeInsets.zero,
-      width: width ?? screenWidth / 2,
-      height: height ?? screenWidth / 2,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(radius ?? screenWidth),
-        child: Image.asset(imagePath),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.topLeft,
+          colors: colors,
+        ),
+        borderRadius: BorderRadius.circular(1000),
+      ),
+      child: CircleAvatar(
+        radius: avartarWidth,
+        backgroundImage: AssetImage(imagePath),
       ),
     );
   }

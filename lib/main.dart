@@ -1,7 +1,7 @@
 import 'dart:developer';
 
+import 'package:berry_common/avatar/gradient_border_circle_avartar.dart';
 import 'package:berry_common/button/gradient_button.dart';
-import 'package:berry_common/image/circle_image.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -37,7 +37,12 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CircleImage(
+              const GradientBorderCircleAvatar(
+                colors: [
+                  Color(0xff4dabf7),
+                  Color(0xffda77f2),
+                  Color(0xfff783ac),
+                ],
                 imagePath: "assets/images/person-winter.png",
               ),
               GradientButton(
